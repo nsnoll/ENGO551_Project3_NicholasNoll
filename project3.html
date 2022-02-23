@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Calgary Accidents</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { 
+		height: 725px;
+	}
+</style>
+</head>
+<body>
+<style>
+    #menu {
+        position: absolute;
+        background: #efefef;
+        padding: 10px;
+    }
+</style>
+
+<div id="map"></div>
+
+<div id="menu">
+    <input id="ckzyop59m00c015n7ej6bhzpp" type="radio" name="rtoggle" value="Navigation">
+    <label for="Navigation">Toggle On Dark Heatmap</label>
+    <input id="ckzyoro8g007q14qm1atighm9" type="radio" name="rtoggle" value="Accidents Heatmap">
+    <label for="Navigation-copy">Toggle Off </label>
+</div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibnNub2xsNjkiLCJhIjoiY2t6ajNuNnVzMGszbDMxbnlxbnd1eWJscSJ9.0QKpivVLueZGRMXloza55g';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/nsnoll69/ckzyop59m00c015n7ej6bhzpp', // style URL
+        center: [-114.075, 51.05], // starting position [lng, lat]
+        zoom: 13 // starting zoom
+    });
+
+    const layerList = document.getElementById('menu');
+    const inputs = layerList.getElementsByTagName('input');
+
+    for (const input of inputs) {
+        input.onclick = (layer) => {
+            const layerId = layer.target.id;
+            map.setStyle('mapbox://styles/nsnoll69/' + layerId);
+        };
+    }
+	
+	
+</script>
+
+</body>
+</html>
